@@ -41,7 +41,7 @@ python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk
 
 ### Run Complete Analysis
 ```bash
-python consumer_complaint_classification.py
+python untitled.py
 ```
 
 ### Key Features
@@ -115,7 +115,6 @@ The analysis provides:
 5. **Classification Report**: Detailed metrics for each category
 
 ## Sample Output
-
 ```
 === CONSUMER COMPLAINT TEXT CLASSIFICATION ===
 Task 5: Kaiburr Assessment
@@ -143,32 +142,49 @@ Dataset shape after preprocessing: (1000, 3)
 === MODEL TRAINING AND COMPARISON ===
 Vectorizing text data...
 
-Training Naive Bayes...
-Naive Bayes Accuracy: 0.8900
-Naive Bayes CV Score: 0.8850 (+/- 0.0250)
+C:\Users\kolla\AppData\Local\Temp\ipykernel_20424\1494159811.py:75: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  data = data.groupby('label', group_keys=False).apply(lambda x: x.sample(min(len(x), SAMPLE_SIZE//4), random_state=RANDOM_STATE))
 
-Training Logistic Regression...
-Logistic Regression Accuracy: 0.9200
-Logistic Regression CV Score: 0.9150 (+/- 0.0200)
+Training LogisticRegression...
+LogisticRegression Accuracy: 0.9873
+              precision    recall  f1-score   support
 
-Training Random Forest...
-Random Forest Accuracy: 0.9100
-Random Forest CV Score: 0.9050 (+/- 0.0225)
+         0.0       0.98      0.99      0.98      2500
+         1.0       0.99      0.99      0.99      2500
+         2.0       0.99      0.99      0.99      2500
+         3.0       0.99      0.98      0.99      2500
 
-Training SVM...
-SVM Accuracy: 0.9250
-SVM CV Score: 0.9200 (+/- 0.0180)
+    accuracy                           0.99     10000
+   macro avg       0.99      0.99      0.99     10000
+weighted avg       0.99      0.99      0.99     10000
 
-Best model: SVM with accuracy: 0.9250
 
-=== DEMO PREDICTION ===
-Sample complaint: I am having issues with my mortgage payment being processed incorrectly and I need help resolving this matter.
-Predicted category: Mortgage
-Category probabilities:
-  Credit reporting, repair, or other: 0.0250
-  Debt collection: 0.0150
-  Consumer Loan: 0.0350
-  Mortgage: 0.9250
+Training MultinomialNB...
+MultinomialNB Accuracy: 0.9768
+              precision    recall  f1-score   support
+
+         0.0       0.97      0.97      0.97      2500
+         1.0       0.98      0.97      0.98      2500
+         2.0       0.98      0.98      0.98      2500
+         3.0       0.98      0.98      0.98      2500
+
+    accuracy                           0.98     10000
+   macro avg       0.98      0.98      0.98     10000
+weighted avg       0.98      0.98      0.98     10000
+
+
+Training LinearSVC...
+LinearSVC Accuracy: 0.9908
+              precision    recall  f1-score   support
+
+         0.0       0.98      0.99      0.99      2500
+         1.0       1.00      0.99      0.99      2500
+         2.0       0.99      1.00      1.00      2500
+         3.0       0.99      0.99      0.99      2500
+
+    accuracy                           0.99     10000
+   macro avg       0.99      0.99      0.99     10000
+weighted avg       0.99      0.99      0.99     10000
 ```
 
 ## Technical Details
@@ -187,28 +203,6 @@ Category probabilities:
 - Stratified sampling to handle class imbalance
 - Cross-validation for robust model evaluation
 
-## Future Enhancements
-
-1. **Advanced Preprocessing**
-   - Named Entity Recognition (NER)
-   - Sentiment analysis integration
-   - Advanced text cleaning techniques
-
-2. **Model Improvements**
-   - Deep learning models (LSTM, BERT)
-   - Ensemble methods
-   - Hyperparameter optimization
-
-3. **Feature Engineering**
-   - N-gram analysis
-   - Semantic similarity features
-   - Domain-specific keyword extraction
-
-4. **Deployment**
-   - REST API for real-time classification
-   - Web interface for complaint submission
-   - Batch processing capabilities
-
 ## Author
-Kaiburr Assessment - Task 5
+KOLLA LOKESH
 Date: 2025
